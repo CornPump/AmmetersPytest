@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # Read the README.md file as well as the source code if you need, and fix the problem.
 
     # Wait for the servers to start, if you have problem restarting the servers between runs try increasing sleep time.
-    time.sleep(3)
+    time.sleep(5)
     data = request_current_from_ammeter(5000, b"MEASURE_GREENLEE -get_measurement")  # Request from Greenlee Ammeter
     print(f"GREENLEE client data = {data}")
     data = request_current_from_ammeter(5001, b'MEASURE_ENTES -get_data')  # Request from ENTES Ammeter

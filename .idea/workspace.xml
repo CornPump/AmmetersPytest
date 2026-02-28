@@ -5,30 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cee20f4-6c6e-4667-abdb-8f4472fdc06e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AmmetersPytest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ammeters/Circutor_Ammeter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ammeters/Entes_Ammeter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ammeters/Greenlee_Ammeter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ammeters/base_ammeter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ammeters/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exam/ammeter-test-specification.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exam/ammeter-test-specification.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/run_tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MY_README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testing/test_framework.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_framework.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/greenly_config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/greenly_config.yaml/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Test_QA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Test_QA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ammeters/Circutor_Ammeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ammeters/Circutor_Ammeter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ammeters/Greenlee_Ammeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ammeters/Greenlee_Ammeter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_framework.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +68,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/projects/interview_exercises/testing_team/Test_QA_expanded",
+    "last_opened_file_path": "C:/Users/Fisher/PycharmProjects/AmmetersPytest",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,6 +80,10 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Fisher\PycharmProjects\AmmetersPytest" />
+      <recent name="C:\Users\Fisher\PycharmProjects\AmmetersPytest\tests" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\projects\interview_exercises\testing_team\Test_QA_expanded\src\utils" />
       <recent name="$PROJECT_DIR$" />
@@ -99,20 +92,17 @@
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Test_QA" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.14 (AmmetersPytest)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -124,7 +114,6 @@
     </configuration>
     <configuration name="Python tests in C:/projects/interview_exercises/testing_team/Test_QA_expanded/tests/test_cases.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Test_QA" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -133,7 +122,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_cases.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -175,22 +163,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Ammeters/Greenlee_Ammeter.py</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Test_QA_expanded$main.coverage" NAME="main Coverage Results" MODIFIED="1769628950880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Test_QA$main.coverage" NAME="main Coverage Results" MODIFIED="1736022467013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AI_solution_Test_QA$.coverage" NAME=" Coverage Results" MODIFIED="1769627869567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AmmetersPytest$main.coverage" NAME="main Coverage Results" MODIFIED="1772200734892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
