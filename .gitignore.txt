@@ -1,0 +1,62 @@
+# =========================
+# JetBrains / PyCharm
+# =========================
+.idea/
+*.iml
+*.iws
+
+# =========================
+# Python bytecode
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+.env/
+.env.*
+.venv/
+env/
+ENV/
+
+# =========================
+# Distribution / packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+file.txt
+
+# =========================
+# Pytest
+# =========================
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# =========================
+# Mypy
+# =========================
+.mypy_cache/
+
+# =========================
+# VS Code (if ever opened there)
+# =========================
+.vscode/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
