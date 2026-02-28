@@ -34,6 +34,7 @@ dist/
 # Logs
 # =========================
 *.log
+!out/**/run.log
 logs/
 file.txt
 
