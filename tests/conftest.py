@@ -8,6 +8,7 @@ import yaml
 import json
 from pathlib import Path
 from tests.helpers import compute_stats_from_csv
+from tests.graphics import simple_value_time_plot
 from Ammeters.Greenlee_Ammeter import GreenleeAmmeter
 from Ammeters.Entes_Ammeter import EntesAmmeter
 from Ammeters.Circutor_Ammeter import CircutorAmmeter
@@ -299,11 +300,19 @@ def run_context(config, ammeter_specs, sampling_cfg):
     logger.info("================================")
 
     global _RUN_CONTEXT_SUMMARY
+    visual_cfg = (config.get("analysis") or {}).get("visualization") or {}
+    enabled = bool(visual_cfg.get("enabled", False))
+    plot_types = visual_cfg.get("plot_types") or []
+
     _RUN_CONTEXT_SUMMARY = {
         "out_dir": out_dir,
         "csv_paths": csv_paths,
         "plan": plan,
         "config_path": config.get("_config_path"),
+        "visualization": {
+            "enabled": enabled,
+            "plot_types": plot_types,
+        },
     }
 
     return {"out_dir": out_dir, "logger": logger, "plan": plan, "csv_paths": csv_paths}
@@ -358,6 +367,30 @@ def pytest_sessionfinish(session, exitstatus):
                 "max": None,
                 "error": str(e),
             }
+
+    # ---- 3) Visualization (plots) ----
+    vis = (_RUN_CONTEXT_SUMMARY.get("visualization") or {})
+    if vis.get("enabled", False):
+        plot_types = vis.get("plot_types") or []
+
+        # default behavior: if plot_types empty -> run the simple plot
+        if not plot_types:
+            plot_types = ["simple_value_time_plot"]
+
+        plots_dir = out_dir / "analysis" / "plots"
+        plots_dir.mkdir(parents=True, exist_ok=True)
+
+        logger = logging.getLogger("ammeter_tests")
+        logger.info(f"Visualization enabled. plot_types={plot_types}")
+
+        for spec_name, csv_path in csv_paths.items():
+            for pt in plot_types:
+                if pt == "simple_value_time_plot":
+                    out_path = plots_dir / f"{spec_name}__simple_value_time.png"
+                    simple_value_time_plot(csv_path, out_path)
+                    logger.info(f"Plot created: {out_path}")
+                else:
+                    logger.warning(f"Unknown plot type '{pt}' (skipping)")
 
     payload = {
         "run_id": out_dir.name,  # timestamp folder name

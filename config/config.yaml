@@ -1,9 +1,9 @@
 testing:
   sampling:
-    measurements_count: 20
+    measurements_count: 400
     total_duration_ms: null
-    sampling_frequency_ms: 100
-    sampling_frequency_min_val: 25
+    sampling_frequency_ms: null
+    sampling_frequency_min_val: 1
 
 ammeters:
   greenlee:
@@ -31,6 +31,7 @@ analysis:
   statistical_metrics:
   visualization:
     enabled: true
-    plot_types: []
+    plot_types:
+      - simple_value_time_plot
 
 result_management: {}
