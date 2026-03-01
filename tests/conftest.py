@@ -61,6 +61,10 @@ def config(request):
     sampling_frequency_ms = int(sampling.get("sampling_frequency_ms")) if sampling.get("sampling_frequency_ms") is not None else None
     min_val = int(min_val)
 
+    # Case: measurements_count only -> choose a default sampling_frequency_ms
+    if measurements_count is not None and total_duration_ms is None and sampling_frequency_ms is None:
+        sampling_frequency_ms = min_val
+
     if min_val <= 0:
         raise RuntimeError("sampling_frequency_min_val must be > 0")
 
