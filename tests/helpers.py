@@ -111,7 +111,7 @@ Returns a dict with counts + metrics (metrics are None if no data).
 """
 def compute_stats_from_csv(csv_path):
 
-    total = 0
+    total = -1
     ok = 0
     excluded = 0
     values = []
