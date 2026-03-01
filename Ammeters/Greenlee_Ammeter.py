@@ -13,4 +13,4 @@ class GreenleeAmmeter(AmmeterEmulatorBase):
         resistance = generate_random_float(0.1, 100.0)  # Random resistance (0.1Ω - 100Ω)
         current = voltage / resistance
         print(f"Greenlee Ammeter - Voltage: {voltage}V, Resistance: {resistance}Ω, Current: {current}A")
-        return 3000
+        return current

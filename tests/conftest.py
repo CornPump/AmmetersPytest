@@ -5,8 +5,9 @@ import csv
 import logging
 import pytest
 import yaml
+import json
 from pathlib import Path
-
+from tests.helpers import compute_stats_from_csv
 from Ammeters.Greenlee_Ammeter import GreenleeAmmeter
 from Ammeters.Entes_Ammeter import EntesAmmeter
 from Ammeters.Circutor_Ammeter import CircutorAmmeter
@@ -297,7 +298,13 @@ def run_context(config, ammeter_specs, sampling_cfg):
         )
     logger.info("================================")
 
-    run_start_epoch = time.time()
+    global _RUN_CONTEXT_SUMMARY
+    _RUN_CONTEXT_SUMMARY = {
+        "out_dir": out_dir,
+        "csv_paths": csv_paths,
+        "plan": plan,
+        "config_path": config.get("_config_path"),
+    }
 
     return {"out_dir": out_dir, "logger": logger, "plan": plan, "csv_paths": csv_paths}
 
@@ -308,21 +315,64 @@ def pytest_runtest_logreport(report):
 
 # hook for appending success/fail of test to start of log file
 def pytest_sessionfinish(session, exitstatus):
-    global _RUN_LOG_PATH
+    global _RUN_LOG_PATH, _RUN_CONTEXT_SUMMARY
 
-    if not _RUN_LOG_PATH or not _RUN_LOG_PATH.exists():
+    # ---- 1) Prepend test results summary to run.log (your existing behavior) ----
+    if _RUN_LOG_PATH and _RUN_LOG_PATH.exists():
+        original = _RUN_LOG_PATH.read_text(encoding="utf-8")
+
+        lines = []
+        lines.append("==== TEST RESULTS SUMMARY ====\n")
+        for nodeid, outcome in _TEST_RESULTS:
+            lines.append(f"{nodeid} -> {outcome.upper()}\n")
+        lines.append(f"\nExit status: {exitstatus}\n")
+        lines.append("==== END TEST RESULTS SUMMARY ====\n\n")
+
+        _RUN_LOG_PATH.write_text("".join(lines) + original, encoding="utf-8")
+
+    # ---- 2) Generate analysis/stats.json (new feature) ----
+    if not _RUN_CONTEXT_SUMMARY:
         return
 
-    original = _RUN_LOG_PATH.read_text(encoding="utf-8")
+    out_dir = _RUN_CONTEXT_SUMMARY["out_dir"]
+    csv_paths = _RUN_CONTEXT_SUMMARY["csv_paths"]
+    plan = _RUN_CONTEXT_SUMMARY.get("plan")
+    cfg_path = _RUN_CONTEXT_SUMMARY.get("config_path")
 
-    lines = []
-    lines.append("==== TEST RESULTS SUMMARY ====\n")
-    for nodeid, outcome in _TEST_RESULTS:
-        lines.append(f"{nodeid} -> {outcome.upper()}\n")
-    lines.append(f"\nExit status: {exitstatus}\n")
-    lines.append("==== END TEST RESULTS SUMMARY ====\n\n")
+    analysis_dir = out_dir / "analysis"
+    analysis_dir.mkdir(parents=True, exist_ok=True)
 
-    _RUN_LOG_PATH.write_text("".join(lines) + original, encoding="utf-8")
+    ammeter_stats = {}
+    for name, path in csv_paths.items():
+        try:
+            ammeter_stats[name] = compute_stats_from_csv(path)
+        except Exception as e:
+            ammeter_stats[name] = {
+                "count_total": None,
+                "count_ok": None,
+                "count_excluded": None,
+                "mean": None,
+                "median": None,
+                "stdev": None,
+                "min": None,
+                "max": None,
+                "error": str(e),
+            }
+
+    payload = {
+        "run_id": out_dir.name,  # timestamp folder name
+        "generated_at_epoch_s": time.time(),
+        "config_path": cfg_path,
+        "sampling_plan": plan,
+        "ammeters": ammeter_stats,
+    }
+
+    stats_path = analysis_dir / "stats.json"
+    stats_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    # Also log it (optional but useful)
+    logger = logging.getLogger("ammeter_tests")
+    logger.info(f"Stats written: {stats_path}")
 
 
 def pytest_generate_tests(metafunc):

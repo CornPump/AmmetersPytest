@@ -1,11 +1,12 @@
-# tests/test_utils.py
 import math
 import time
 import csv
+import json
+from statistics import mean, median, stdev
 
 ERROR_CODES = {-1.0: "NO_DATA", -2.0: "TIMEOUT", -3.0: "EXCEPTION", -4.0: "OUT_OF_VALID_RANGE"}
 DEFAULT_MEASUREMENTS_COUNT = 20  # if config provides only sampling_frequency_ms
-
+_RUN_CONTEXT_SUMMARY = None
 def append_measurement_row(run_context: dict, spec: dict, value: float, out_of_range=False) -> None:
     out_path = run_context["csv_paths"][spec["name"]]
     logger = run_context["logger"]
@@ -102,3 +103,61 @@ def build_sampling_plan(sampling_cfg: dict) -> dict:
         "sampling_frequency_ms": sf,
         "period_s": sf / 1000.0,
     }
+
+"""
+Reads the per-ammeter CSV and computes stats using ONLY rows where status == "OK".
+Excludes OUT_OF_RANGE and any error codes.
+Returns a dict with counts + metrics (metrics are None if no data).
+"""
+def compute_stats_from_csv(csv_path):
+
+    total = 0
+    ok = 0
+    excluded = 0
+    values = []
+
+    with csv_path.open("r", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            total += 1
+            status = (row.get("status") or "").strip()
+
+            # Only OK counts toward stats
+            if status != "OK":
+                excluded += 1
+                continue
+
+            try:
+                v = float(row.get("value"))
+            except (TypeError, ValueError):
+                excluded += 1
+                continue
+
+            values.append(v)
+            ok += 1
+
+    if ok == 0:
+        return {
+            "count_total": total,
+            "count_ok": 0,
+            "count_excluded": excluded,
+            "mean": None,
+            "median": None,
+            "stdev": None,
+            "min": None,
+            "max": None,
+        }
+
+    stats = {
+        "count_total": total,
+        "count_ok": ok,
+        "count_excluded": excluded,
+        "mean": mean(values),
+        "median": median(values),
+        "min": min(values),
+        "max": max(values),
+    }
+
+    # stdev needs >= 2 samples
+    stats["stdev"] = stdev(values) if ok >= 2 else None
+    return stats
