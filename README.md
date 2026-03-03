@@ -133,7 +133,7 @@ for example:
 greenlee__simple_value_time.png
 entes__simple_value_time.png
 circutor__simple_value_time.png
-
+![Greenlee Plot](https://raw.githubusercontent.com/CornPump/AmmetersPytest/main/tests/out/2026-03-01T16-56-01/analysis/plots/greenlee__simple_value_time.png)
 ## Historical Comparison CLI
 
 python tests/compare_stats.py --runs-dir tests/out --ammeters greenlee entes circutor
@@ -151,6 +151,7 @@ stdev_normalized
 
 Unified comparison plots (if multiple ammeters selected)
 Plotting the Ammeters on the same plot.
+![Unified STDEV Normalized](https://raw.githubusercontent.com/CornPump/AmmetersPytest/main/out/statistic/2026-03-01T18-29-00/unified__stdev_normalized.png)
 summary.json
 
 ### Each plot:
