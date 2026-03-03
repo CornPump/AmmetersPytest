@@ -1,0 +1,45 @@
+{
+  "runs_dir": "tests\\out",
+  "stats_files_count": 7,
+  "runs_used": [
+    {
+      "run_id": "2026-03-01T16-07-03",
+      "stats_path": "tests\\out\\2026-03-01T16-07-03\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T16-16-12",
+      "stats_path": "tests\\out\\2026-03-01T16-16-12\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T16-16-23",
+      "stats_path": "tests\\out\\2026-03-01T16-16-23\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T16-51-05",
+      "stats_path": "tests\\out\\2026-03-01T16-51-05\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T16-53-27",
+      "stats_path": "tests\\out\\2026-03-01T16-53-27\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T16-56-01",
+      "stats_path": "tests\\out\\2026-03-01T16-56-01\\analysis\\stats.json"
+    },
+    {
+      "run_id": "2026-03-01T17-08-25",
+      "stats_path": "tests\\out\\2026-03-01T17-08-25\\analysis\\stats.json"
+    }
+  ],
+  "ammeters": [
+    "circutor",
+    "entes",
+    "greenlee"
+  ],
+  "metrics": [
+    "mean",
+    "median",
+    "stdev",
+    "stdev_normalized"
+  ]
+}

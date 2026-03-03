@@ -1,0 +1,42 @@
+{
+  "run_id": "2026-03-03T20-00-14",
+  "generated_at_epoch_s": 1772560829.2716308,
+  "config_path": "config\\config.yaml",
+  "sampling_plan": {
+    "measurements_count": 400,
+    "sampling_frequency_ms": 1,
+    "period_s": 0.001
+  },
+  "ammeters": {
+    "greenlee": {
+      "count_total": 400,
+      "count_ok": 400,
+      "count_excluded": 1,
+      "mean": 0.40956542199182805,
+      "median": 0.1146293521361989,
+      "min": 0.012263049092511713,
+      "max": 42.56245401722047,
+      "stdev": 2.2514065431204795
+    },
+    "entes": {
+      "count_total": 400,
+      "count_ok": 400,
+      "count_excluded": 1,
+      "mean": 66.03034529611251,
+      "median": 56.03418755222362,
+      "min": 5.780927139412134,
+      "max": 191.92983428204377,
+      "stdev": 40.94704233503373
+    },
+    "circutor": {
+      "count_total": 400,
+      "count_ok": 400,
+      "count_excluded": 1,
+      "mean": 0.029309105792716058,
+      "median": 0.028019552612331217,
+      "min": 0.004690545263303665,
+      "max": 0.06997954199295138,
+      "stdev": 0.015239038619272517
+    }
+  }
+}
